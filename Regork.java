@@ -14,7 +14,7 @@ Add a received shipment for every store
 */
 
 public class Regork{
-    public static String username = "zdt227";
+    public static String username = "";
     public static String password = "";
     public static int interfaceMode = 0;
     public static void main(String[] args){
@@ -53,7 +53,7 @@ public class Regork{
         if (mode == 1){
             password = scan.nextLine();
             try(
-                Connection c = DriverManager.getConnection("jdbc:oracle:thin:@edgar1.cse.lehigh.edu:1521:cse241", username, password);
+                Connection c = DriverManager.getConnection("", username, password);
                 Statement s = c.createStatement();
             ){
                 System.out.println("Login successful!");
@@ -224,7 +224,7 @@ public class Regork{
     public static void viewEveryProduct(){
         String serial = "";
         try(
-            Connection c = DriverManager.getConnection("jdbc:oracle:thin:@edgar1.cse.lehigh.edu:1521:cse241", username, password);
+            Connection c = DriverManager.getConnection("", username, password);
             Statement s = c.createStatement();
         ){
             String getStoreIDs = "SELECT * FROM PRODUCT_INFO";
@@ -260,7 +260,7 @@ public class Regork{
         String productID = "";
         boolean invalidInput = false;
         try(
-            Connection c = DriverManager.getConnection("jdbc:oracle:thin:@edgar1.cse.lehigh.edu:1521:cse241", username, password);
+            Connection c = DriverManager.getConnection("", username, password);
             Statement s = c.createStatement();
         ){
             String getStoreIDs = "SELECT * FROM PRODUCT_INFO";
@@ -311,7 +311,7 @@ public class Regork{
         boolean hasOutput = false;
         System.out.println("Ingredients:");
         try(
-            Connection c = DriverManager.getConnection("jdbc:oracle:thin:@edgar1.cse.lehigh.edu:1521:cse241", username, password);
+            Connection c = DriverManager.getConnection("", username, password);
             Statement s = c.createStatement();
         ){
             String getAllIngredients = 
@@ -364,7 +364,7 @@ public class Regork{
         String productID = "";
         boolean invalidInput = false;
         try(
-            Connection c = DriverManager.getConnection("jdbc:oracle:thin:@edgar1.cse.lehigh.edu:1521:cse241", username, password);
+            Connection c = DriverManager.getConnection("", username, password);
             Statement s = c.createStatement();
         ){
             String getStoreIDs = "SELECT * FROM PRODUCT_INFO";
@@ -413,7 +413,7 @@ public class Regork{
         }
         while(invalidInput);
         try(
-            Connection c = DriverManager.getConnection("jdbc:oracle:thin:@edgar1.cse.lehigh.edu:1521:cse241", username, password);
+            Connection c = DriverManager.getConnection("", username, password);
             Statement s = c.createStatement();
         ){
             String getAllRecalls = 
@@ -500,7 +500,7 @@ public class Regork{
         String supplierID = "";
         boolean invalidInput = false;
         try(
-            Connection c = DriverManager.getConnection("jdbc:oracle:thin:@edgar1.cse.lehigh.edu:1521:cse241", username, password);
+            Connection c = DriverManager.getConnection("", username, password);
             Statement s = c.createStatement();
         ){
             String getSupplierIDs = "SELECT SUPPLIER_ID FROM SUPPLIER";
@@ -548,7 +548,7 @@ public class Regork{
         while(invalidInput);
         System.out.println("Downloading supplier information...");
         try(
-            Connection c = DriverManager.getConnection("jdbc:oracle:thin:@edgar1.cse.lehigh.edu:1521:cse241", username, password);
+            Connection c = DriverManager.getConnection("", username, password);
             Statement s = c.createStatement();
         ){
             String getStoreInfo = "SELECT * FROM SUPPLIER WHERE SUPPLIER_ID = '" + supplierID + "'";
@@ -600,7 +600,7 @@ public class Regork{
     public static void supplierMode1_viewOutgoing(Scanner scan, String supplierID){
         boolean output = false;
         try(
-            Connection c = DriverManager.getConnection("jdbc:oracle:thin:@edgar1.cse.lehigh.edu:1521:cse241", username, password);
+            Connection c = DriverManager.getConnection("", username, password);
             Statement s = c.createStatement();
         ){
             String getOutgoingShipments1 = "SELECT * FROM SUPPLIER_SHIPMENTS WHERE SENDER = '" + supplierID + "'"; 
@@ -629,7 +629,7 @@ public class Regork{
         }
         output = false;
         try(
-            Connection c = DriverManager.getConnection("jdbc:oracle:thin:@edgar1.cse.lehigh.edu:1521:cse241", username, password);
+            Connection c = DriverManager.getConnection("", username, password);
             Statement s = c.createStatement();
         ){
             String getOutgoingShipments2 = "SELECT * FROM STORE_SHIPMENTS WHERE SUPPLIER_ID = '" + supplierID + "'"; 
@@ -660,7 +660,7 @@ public class Regork{
     public static void supplierMode1_viewIncoming(Scanner scan, String supplierID){
         boolean output = false;
         try(
-            Connection c = DriverManager.getConnection("jdbc:oracle:thin:@edgar1.cse.lehigh.edu:1521:cse241", username, password);
+            Connection c = DriverManager.getConnection("", username, password);
             Statement s = c.createStatement();
         ){
             String getOutgoingShipments1 = "SELECT * FROM SUPPLIER_SHIPMENTS WHERE RECIPIENT = '" + supplierID + "'";
@@ -689,7 +689,7 @@ public class Regork{
     }
     public static void supplierMode1_viewAllProducts(Scanner scan, String supplierID){
         try(
-            Connection c = DriverManager.getConnection("jdbc:oracle:thin:@edgar1.cse.lehigh.edu:1521:cse241", username, password);
+            Connection c = DriverManager.getConnection("", username, password);
             Statement s = c.createStatement();
         ){
             String getProducts =
@@ -734,7 +734,7 @@ public class Regork{
     }
     public static void viewEveryShipment(Scanner scan){
         try(
-            Connection c = DriverManager.getConnection("jdbc:oracle:thin:@edgar1.cse.lehigh.edu:1521:cse241", username, password);
+            Connection c = DriverManager.getConnection("", username, password);
             Statement s = c.createStatement();
         ){
             String getEveryShipment1 = "SELECT * FROM SUPPLIER_SHIPMENTS"; 
@@ -759,7 +759,7 @@ public class Regork{
             System.out.print("SQL error - " + e.getMessage());
         }
         try(
-            Connection c = DriverManager.getConnection("jdbc:oracle:thin:@edgar1.cse.lehigh.edu:1521:cse241", username, password);
+            Connection c = DriverManager.getConnection("", username, password);
             Statement s = c.createStatement();
         ){
             String getOutgoingShipments2 = "SELECT * FROM STORE_SHIPMENTS"; 
@@ -789,7 +789,7 @@ public class Regork{
         boolean invalidInput = false;
         String shipmentID = "";
         try(
-            Connection c = DriverManager.getConnection("jdbc:oracle:thin:@edgar1.cse.lehigh.edu:1521:cse241", username, password);
+            Connection c = DriverManager.getConnection("", username, password);
             Statement s = c.createStatement();
         ){
             String getShipmentIDs = "SELECT SHIPMENT_ID FROM SHIPMENT";
@@ -836,7 +836,7 @@ public class Regork{
         }
         while(invalidInput);
         try(
-            Connection c = DriverManager.getConnection("jdbc:oracle:thin:@edgar1.cse.lehigh.edu:1521:cse241", username, password);
+            Connection c = DriverManager.getConnection("", username, password);
             Statement s = c.createStatement();
         ){
             String getCrates = "SELECT * FROM SHIPMENT, CRATE WHERE SHIPMENT.SHIPMENT_ID = CRATE.SHIPMENT_ID and SHIPMENT.SHIPMENT_ID = '" + shipmentID + "'";
@@ -872,7 +872,7 @@ public class Regork{
         boolean hasDestination = false;
         String currentDestination = "";
         try(
-            Connection c = DriverManager.getConnection("jdbc:oracle:thin:@edgar1.cse.lehigh.edu:1521:cse241", username, password);
+            Connection c = DriverManager.getConnection("", username, password);
             Statement s = c.createStatement();
         ){
             String getShipmentIDs = "SELECT SHIPMENT_ID FROM SHIPMENT";
@@ -919,7 +919,7 @@ public class Regork{
         }
         while(invalidInput);
         try(
-            Connection c = DriverManager.getConnection("jdbc:oracle:thin:@edgar1.cse.lehigh.edu:1521:cse241", username, password);
+            Connection c = DriverManager.getConnection("", username, password);
             Statement s = c.createStatement();
         ){
             String getDestination1 = "SELECT * FROM STORE_SHIPMENTS WHERE SHIPMENT_ID = '" + shipmentID + "'";
@@ -943,7 +943,7 @@ public class Regork{
         }
         if(!hasDestination){
             try(
-                Connection c = DriverManager.getConnection("jdbc:oracle:thin:@edgar1.cse.lehigh.edu:1521:cse241", username, password);
+                Connection c = DriverManager.getConnection("", username, password);
                 Statement s = c.createStatement();
             ){
                 String getDestination2 = "SELECT * FROM SUPPLIER_SHIPMENTS WHERE SHIPMENT_ID = '" + shipmentID + "'";
@@ -969,7 +969,7 @@ public class Regork{
             currentDestination = "N/A";
         }
         try(
-            Connection c = DriverManager.getConnection("jdbc:oracle:thin:@edgar1.cse.lehigh.edu:1521:cse241", username, password);
+            Connection c = DriverManager.getConnection("", username, password);
             Statement s = c.createStatement();
         ){
             String getDestinations1 = "SELECT * FROM STORE_LOCATION";
@@ -1050,7 +1050,7 @@ public class Regork{
         while(invalidInput);
         if(!storeOrSupplier){
             try(
-                Connection c = DriverManager.getConnection("jdbc:oracle:thin:@edgar1.cse.lehigh.edu:1521:cse241", username, password);
+                Connection c = DriverManager.getConnection("", username, password);
                 Statement s = c.createStatement();
             ){
                 String updateDestination = "DELETE FROM SUPPLIER_RECEIVES WHERE SHIPMENT_ID = '" + shipmentID + "'";
@@ -1067,7 +1067,7 @@ public class Regork{
         }
         else{
             try(
-                Connection c = DriverManager.getConnection("jdbc:oracle:thin:@edgar1.cse.lehigh.edu:1521:cse241", username, password);
+                Connection c = DriverManager.getConnection("", username, password);
                 Statement s = c.createStatement();
             ){
                 String updateDestination = "";
@@ -1106,7 +1106,7 @@ public class Regork{
         String addCrate = "";
         String temp = "";
         try(
-            Connection c = DriverManager.getConnection("jdbc:oracle:thin:@edgar1.cse.lehigh.edu:1521:cse241", username, password);
+            Connection c = DriverManager.getConnection("", username, password);
             Statement s = c.createStatement();
         ){
             String getShipments = "SELECT * FROM SHIPMENT";
@@ -1133,7 +1133,7 @@ public class Regork{
             System.out.print("SQL error - " + e.getMessage());
         }
         try(
-            Connection c = DriverManager.getConnection("jdbc:oracle:thin:@edgar1.cse.lehigh.edu:1521:cse241", username, password);
+            Connection c = DriverManager.getConnection("", username, password);
             Statement s = c.createStatement();
         ){
             String getShipments = "SELECT * FROM SUPPLIER";
@@ -1187,7 +1187,7 @@ public class Regork{
         }
         while(invalidInput);
         try(
-            Connection c = DriverManager.getConnection("jdbc:oracle:thin:@edgar1.cse.lehigh.edu:1521:cse241", username, password);
+            Connection c = DriverManager.getConnection("", username, password);
             Statement s = c.createStatement();
         ){
             String createShipmentPT1 = "Insert into Shipment(SHIPMENT_ID, STORE_ID, SUPPLIER_ID) VALUES ('" + newShipmentID + "', null, '" + newShipmentSupplier + "')";
@@ -1201,7 +1201,7 @@ public class Regork{
             System.out.print("SQL error - " + e.getMessage());
         }
         try(
-            Connection c = DriverManager.getConnection("jdbc:oracle:thin:@edgar1.cse.lehigh.edu:1521:cse241", username, password);
+            Connection c = DriverManager.getConnection("", username, password);
             Statement s = c.createStatement();
         ){
             String getStoreIDs = "SELECT * FROM PRODUCT_INFO";
@@ -1310,7 +1310,7 @@ public class Regork{
             }
             while(existingBatchIDs.contains(batchID));
             try(
-                Connection c = DriverManager.getConnection("jdbc:oracle:thin:@edgar1.cse.lehigh.edu:1521:cse241", username, password);
+                Connection c = DriverManager.getConnection("", username, password);
                 Statement s = c.createStatement();
             ){
                 String createCrate = "INSERT INTO Crate(BATCH_ID, SHIPMENT_ID, PRODUCT_ID, UNITS, PRICE_PAID) " + "VALUES ('" + batchID + "', '" + newShipmentID + "', '" + productID + "', '" + units + "', '" + price + "')";
@@ -1367,7 +1367,7 @@ public class Regork{
         String storeID = "";
         boolean invalidInput = false;
         try(
-            Connection c = DriverManager.getConnection("jdbc:oracle:thin:@edgar1.cse.lehigh.edu:1521:cse241", username, password);
+            Connection c = DriverManager.getConnection("", username, password);
             Statement s = c.createStatement();
         ){
             String getStoreIDs = "SELECT STORE_ID FROM STORE_LOCATION";
@@ -1415,7 +1415,7 @@ public class Regork{
         while(invalidInput);
         System.out.println("Downloading store information...");
         try(
-            Connection c = DriverManager.getConnection("jdbc:oracle:thin:@edgar1.cse.lehigh.edu:1521:cse241", username, password);
+            Connection c = DriverManager.getConnection("", username, password);
             Statement s = c.createStatement();
         ){
             String getStoreInfo = "SELECT * FROM STORE_LOCATION WHERE STORE_ID = '" + storeID + "'";
@@ -1477,7 +1477,7 @@ public class Regork{
     }
     public static void managerMode1_viewAllSuppliers(Scanner scan, String storeID){
         try(
-            Connection c = DriverManager.getConnection("jdbc:oracle:thin:@edgar1.cse.lehigh.edu:1521:cse241", username, password);
+            Connection c = DriverManager.getConnection("", username, password);
             Statement s = c.createStatement();
         ){
             String getSuppliers =
@@ -1513,7 +1513,7 @@ public class Regork{
     }
     public static void managerMode1_viewAllShipments(Scanner scan, String storeID){
         try(
-            Connection c = DriverManager.getConnection("jdbc:oracle:thin:@edgar1.cse.lehigh.edu:1521:cse241", username, password);
+            Connection c = DriverManager.getConnection("", username, password);
             Statement s = c.createStatement();
         ){
             String getShipments =
@@ -1549,7 +1549,7 @@ public class Regork{
     }
     public static void managerMode1_viewAllProducts(Scanner scan, String storeID){
         try(
-            Connection c = DriverManager.getConnection("jdbc:oracle:thin:@edgar1.cse.lehigh.edu:1521:cse241", username, password);
+            Connection c = DriverManager.getConnection("", username, password);
             Statement s = c.createStatement();
         ){
             String getProducts =
@@ -1599,7 +1599,7 @@ public class Regork{
         String serial = "";
         boolean invalidInput = false;
         try(
-            Connection c = DriverManager.getConnection("jdbc:oracle:thin:@edgar1.cse.lehigh.edu:1521:cse241", username, password);
+            Connection c = DriverManager.getConnection("", username, password);
             Statement s = c.createStatement();
         ){
             String getStoreIDs = "SELECT * FROM PRODUCT_INFO";
@@ -1635,7 +1635,7 @@ public class Regork{
         }
 
         try(
-            Connection c = DriverManager.getConnection("jdbc:oracle:thin:@edgar1.cse.lehigh.edu:1521:cse241", username, password);
+            Connection c = DriverManager.getConnection("", username, password);
             Statement s = c.createStatement();
         ){
             String getProducts =
@@ -1686,7 +1686,7 @@ public class Regork{
         }
         while(invalidInput);
         try(
-            Connection c = DriverManager.getConnection("jdbc:oracle:thin:@edgar1.cse.lehigh.edu:1521:cse241", username, password);
+            Connection c = DriverManager.getConnection("", username, password);
             Statement s = c.createStatement();
         ){
             String addProduct = "INSERT INTO SELLS(STORE_ID, PRODUCT_ID) values (" + storeID + ", " + productID + ')';
@@ -1705,7 +1705,7 @@ public class Regork{
         String productID = "";
         Boolean invalidInput = false;
         try(
-            Connection c = DriverManager.getConnection("jdbc:oracle:thin:@edgar1.cse.lehigh.edu:1521:cse241", username, password);
+            Connection c = DriverManager.getConnection("", username, password);
             Statement s = c.createStatement();
         ){
             String getProducts =
@@ -1757,7 +1757,7 @@ public class Regork{
         }
         while(invalidInput);
         try(
-            Connection c = DriverManager.getConnection("jdbc:oracle:thin:@edgar1.cse.lehigh.edu:1521:cse241", username, password);
+            Connection c = DriverManager.getConnection("", username, password);
             Statement s = c.createStatement();
         ){
             String addProduct = "DELETE FROM SELLS WHERE STORE_ID = '" + storeID + "' AND PRODUCT_ID = '" + productID + "'";
@@ -1774,7 +1774,7 @@ public class Regork{
         ArrayList<String> stores2 = new ArrayList<>();
         String storeID = "";
         try(
-            Connection c = DriverManager.getConnection("jdbc:oracle:thin:@edgar1.cse.lehigh.edu:1521:cse241", username, password);
+            Connection c = DriverManager.getConnection("", username, password);
             Statement s = c.createStatement();
         ){
             String getStoreInfo = "SELECT * FROM STORE_LOCATION";
@@ -1810,7 +1810,7 @@ public class Regork{
         String zip = "";
         String store_id = "";
         try(
-            Connection c = DriverManager.getConnection("jdbc:oracle:thin:@edgar1.cse.lehigh.edu:1521:cse241", username, password);
+            Connection c = DriverManager.getConnection("", username, password);
             Statement s = c.createStatement();
         ){
             String getAddresses = "SELECT * FROM STORE_LOCATION";
@@ -1911,7 +1911,7 @@ public class Regork{
         while(existingStoreIds.contains(store_id));
 
         try(
-            Connection c = DriverManager.getConnection("jdbc:oracle:thin:@edgar1.cse.lehigh.edu:1521:cse241", username, password);
+            Connection c = DriverManager.getConnection("", username, password);
             Statement s = c.createStatement();
         ){
             String insertStore = "INSERT INTO STORE_LOCATION(STORE_ID, STREET, CITY, STORE_STATE, ZIP) VALUES (?, ?, ?, ?, ?)";
@@ -1940,7 +1940,7 @@ public class Regork{
         String storeID = "";
         boolean invalidInput = false;
         try(
-            Connection c = DriverManager.getConnection("jdbc:oracle:thin:@edgar1.cse.lehigh.edu:1521:cse241", username, password);
+            Connection c = DriverManager.getConnection("", username, password);
             Statement s = c.createStatement();
         ){
             String getStoreInfo = "SELECT * FROM STORE_LOCATION";
@@ -1994,7 +1994,7 @@ public class Regork{
         }
         while(invalidInput);
         try(
-            Connection c = DriverManager.getConnection("jdbc:oracle:thin:@edgar1.cse.lehigh.edu:1521:cse241", username, password);
+            Connection c = DriverManager.getConnection("", username, password);
             Statement s = c.createStatement();
         ){
             String addProduct = "DELETE STORE_LOCATION WHERE STORE_ID = '" + storeID + "'";
